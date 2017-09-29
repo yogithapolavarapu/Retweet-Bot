@@ -3,11 +3,11 @@ TWITTER_CONSUMER_SECRET = "";
 TWITTER_ACCESS_TOKEN    = "";
 TWITTER_ACCESS_SECRET   = "";
 TWITTER_SEARCH_PHRASE   = "python";
-TWITTER_SEARCH_PHRASE_2 = "Monty";
-TWITTER_SEARCH_PHRASE_3 = "lurking";
 
-
-
+//variables for array of excluded words and a variable for the length of the array
+//array can be modified to contain as many excluded words or phrases as needed
+var excluded = ["Monty", "monty", "lurking", "Lurking", "ball python", "snake", "Snake"];
+var numexcluded = excluded.length;
  
 function Start_Bot() {
   
@@ -53,14 +53,30 @@ function retweet_Python() {
     var props = PropertiesService.getScriptProperties(),
         twit = new Twitter.OAuth(props);
     
+    //function to loop through array of excluded words
+    //created to reduce the number of conditions in the tweet_processor if statement
+    //returns true if tweet contains excluded phrase, otherwise returns false
+    //uses indexOf() instead of includes() since includes() does not work in Google App Scripts
+    function containsExcludedPhrase(tweetobj){
+      for (var i = 0; i < numexcluded; i++){
+        if (tweetobj.text.indexOf(excluded[i]) !== -1){
+          return true;
+        }
+        else {
+          return false;
+        }
+      }
+    }
+    
     if (twit.hasAccess()) {
       
       var tweets = twit.fetchTweets(
         TWITTER_SEARCH_PHRASE, function(tweet) {
-          // Skip tweets that contain sensitive content
-          if (!tweet.possibly_sensitive && !tweet.includes(TWITTER_SEARCH_PHRASE_2) && !tweet.includes(TWITTER_SEARCH_PHRASE_3)) {
+          //skip over possibly sensitive tweets and tweets that contain any of the excluded phrases
+          if (!tweet.possibly_sensitive && !containsExcludedPhrase(tweet)){
             return tweet.id_str;
           }
+          
         }, {
           multi: true,
           lang: "en", // Process only English tweets
