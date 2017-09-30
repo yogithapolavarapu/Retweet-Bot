@@ -5,8 +5,8 @@ TWITTER_ACCESS_SECRET   = "";
 TWITTER_SEARCH_PHRASE   = "python";
 
 //variables for array of excluded words and a variable for the length of the array
-//array can be modified to contain as many excluded words or phrases as needed
-var excluded = ["Monty", "monty", "lurking", "Lurking", "ball python", "snake", "Snake"];
+//words will be added as I continue to find false positives
+var excluded = ["Monty", "monty", "lurking", "Lurking", "ball python", "snake", "Snake", "Biafra", "biafra"];
 var numexcluded = excluded.length;
  
 function Start_Bot() {
@@ -56,7 +56,6 @@ function retweet_Python() {
     //function to loop through array of excluded words
     //created to reduce the number of conditions in the tweet_processor if statement
     //returns true if tweet contains excluded phrase, otherwise returns false
-    //uses indexOf() instead of includes() since includes() does not work in Google App Scripts
     function containsExcludedPhrase(tweetobj){
       for (var i = 0; i < numexcluded; i++){
         if (tweetobj.text.indexOf(excluded[i]) !== -1){
