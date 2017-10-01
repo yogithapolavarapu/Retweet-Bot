@@ -58,14 +58,16 @@ function retweet_Python() {
     //if any of the if conditions match, it returns false (not relevant) and fetchTweets will not fetch it
     //otherwise it returns the tweet
       function isTweetRelevant(tweetobj){
+        
         for (var i = 0; i < numexcluded; i++){
           if (tweetobj.text.indexOf(excluded[i]) !== -1 || tweetobj.possibly_sensitive){
+            Logger.log(tweetobj.text);
             return false;
           }
-          else {
-            return true;
-          }
         }
+        
+        //return true only if return false hasn't triggered from the loop
+        return true;
 
     }
     
@@ -73,7 +75,7 @@ function retweet_Python() {
       
       var tweets = twit.fetchTweets(
         TWITTER_SEARCH_PHRASE, function(tweet){
-         return isTweetRelevant(tweet);
+          return isTweetRelevant(tweet);
         }, {
           multi: true,
           lang: "en", // Process only English tweets
