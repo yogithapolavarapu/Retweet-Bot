@@ -85,7 +85,7 @@ function retweet_Python() {
       
       if (tweets.length) {
         
-        props.setProperty("SINCE_TWITTER_ID", tweets[0]);
+        props.setProperty("SINCE_TWITTER_ID", tweets[0].id_str);
         
         for (var i = tweets.length - 1; i >= 0; i--) {
           
