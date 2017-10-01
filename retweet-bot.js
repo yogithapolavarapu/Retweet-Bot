@@ -2,13 +2,16 @@ TWITTER_CONSUMER_KEY    = "";
 TWITTER_CONSUMER_SECRET = "";
 TWITTER_ACCESS_TOKEN    = "";
 TWITTER_ACCESS_SECRET   = "";
-TWITTER_SEARCH_PHRASE   = "python -filter:nativeretweets -filter:retweets";
+TWITTER_SEARCH_PHRASE   = "python -filter:nativeretweets -filter:retweets -filter:replies";
 
 //variables for array of excluded words and a variable for the length of the array
 //words will be added as I continue to find false positives
-var excluded = ["Monty", "monty", "lurking", "Lurking", "ball python", "snake", "Snake", "Biafra", "biafra", 
-                "montypython", "MontyPython", "pet", "Pet", "Dance", "dance", "Police", "police", "Leather", "leather", 
-                "Pants", "pants", "Handbag", "handbag", "forsyth", "Forsyth"];
+var excluded = ["Monty", "monty", "lurking", "Lurking", "ball python", "snake", "Snake", "Biafra", "biafra", "BIAFRA", "Biafrans", "biafrans",
+                "montypython", "MontyPython", "pet", "Pet", "Dance", "dance", "Police", "police", "Leather", "leather",
+                "Pants", "pants", "Handbag", "handbag", "forsyth", "Forsyth", "Ball Python" , "Nigeria", "nigeria"];
+//all of the Biafra/Nigeria/Dance references are because "python" is a symbol in some political current events going on there
+
+
 var numexcluded = excluded.length;
  
 function Start_Bot() {
@@ -61,17 +64,25 @@ function retweet_Python() {
     //otherwise it returns the tweet
       function isTweetRelevant(tweetobj){
         
-        for (var i = 0; i < numexcluded; i++){
-          if (tweetobj.text.indexOf(excluded[i]) !== -1 || tweetobj.possibly_sensitive){
-            
-            return false;
-          }
+        //if the tweet text property does not contain the word python in some form, return false
+        //this is a relatively strict rule which may skip semi-relevant tweets. it may filter out some okay results but may be necessary for quality
+        if(tweetobj.text.indexOf("python") == -1 && tweetobj.text.indexOf("Python") == -1){
+          return false;
         }
         
-        //return true only if return false hasn't triggered from the loop
-        return true;
+        //if the tweet is sensitive or contains a non-allowed word, return false
+        for (var i = 0; i < numexcluded; i++){
+              if (tweetobj.text.indexOf(excluded[i]) !== -1 || tweetobj.possibly_sensitive){
+                return false;
+                }
+              }
 
+        
+        //return true only if return false hasn't triggered from the conditions above
+        return true;
       }
+
+   
     
     if (twit.hasAccess()) {
       
