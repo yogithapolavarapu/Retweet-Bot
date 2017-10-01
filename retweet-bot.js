@@ -2,11 +2,13 @@ TWITTER_CONSUMER_KEY    = "";
 TWITTER_CONSUMER_SECRET = "";
 TWITTER_ACCESS_TOKEN    = "";
 TWITTER_ACCESS_SECRET   = "";
-TWITTER_SEARCH_PHRASE   = "python";
+TWITTER_SEARCH_PHRASE   = "python -filter:nativeretweets -filter:retweets";
 
 //variables for array of excluded words and a variable for the length of the array
 //words will be added as I continue to find false positives
-var excluded = ["Monty", "monty", "lurking", "Lurking", "ball python", "snake", "Snake", "Biafra", "biafra", "montypython", "MontyPython", "pet", "Pet", "Dance", "dance", "Police", "police", "Leather", "leather", "Pants", "pants"];
+var excluded = ["Monty", "monty", "lurking", "Lurking", "ball python", "snake", "Snake", "Biafra", "biafra", 
+                "montypython", "MontyPython", "pet", "Pet", "Dance", "dance", "Police", "police", "Leather", "leather", 
+                "Pants", "pants", "Handbag", "handbag", "forsyth", "Forsyth"];
 var numexcluded = excluded.length;
  
 function Start_Bot() {
