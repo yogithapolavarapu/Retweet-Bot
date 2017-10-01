@@ -73,7 +73,7 @@ function retweet_Python() {
       
       var tweets = twit.fetchTweets(
         TWITTER_SEARCH_PHRASE, function(tweet){
-          isTweetRelevant(tweet);
+         return isTweetRelevant(tweet);
         }, {
           multi: true,
           lang: "en", // Process only English tweets
