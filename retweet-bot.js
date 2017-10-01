@@ -72,7 +72,9 @@ function retweet_Python() {
     if (twit.hasAccess()) {
       
       var tweets = twit.fetchTweets(
-        TWITTER_SEARCH_PHRASE, isTweetRelevant(tweet), {
+        TWITTER_SEARCH_PHRASE, function(tweet){
+          isTweetRelevant(tweet);
+        }, {
           multi: true,
           lang: "en", // Process only English tweets
           count: 5,   // Process 5 tweets in a batch
