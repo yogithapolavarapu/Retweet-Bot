@@ -6,7 +6,7 @@ TWITTER_SEARCH_PHRASE   = "python";
 
 //variables for array of excluded words and a variable for the length of the array
 //words will be added as I continue to find false positives
-var excluded = ["Monty", "monty", "lurking", "Lurking", "ball python", "snake", "Snake", "Biafra", "biafra", "montypython", "MontyPython", "pet", "Pet", "Dance", "dance"];
+var excluded = ["Monty", "monty", "lurking", "Lurking", "ball python", "snake", "Snake", "Biafra", "biafra", "montypython", "MontyPython", "pet", "Pet", "Dance", "dance", "Police", "police"];
 var numexcluded = excluded.length;
  
 function Start_Bot() {
