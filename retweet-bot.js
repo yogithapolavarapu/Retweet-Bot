@@ -59,7 +59,7 @@ function retweet_Python() {
     //otherwise it returns the tweet
       function isTweetRelevant(tweetobj){
         for (var i = 0; i < numexcluded; i++){
-          if (tweetobj.text.indexOf(excluded[i]) !== -1 || tweet.possibly_sensitive){
+          if (tweetobj.text.indexOf(excluded[i]) !== -1 || tweetobj.possibly_sensitive){
             return false;
           }
           else {
