@@ -61,7 +61,7 @@ function retweet_Python() {
         
         for (var i = 0; i < numexcluded; i++){
           if (tweetobj.text.indexOf(excluded[i]) !== -1 || tweetobj.possibly_sensitive){
-            Logger.log(tweetobj.text);
+            
             return false;
           }
         }
