@@ -68,10 +68,12 @@ function retweet_Python() {
         if(tweetobj.text.indexOf("python") == -1 && tweetobj.text.indexOf("Python") == -1){
           return false;
         }
+        //make object into a string to search the entire object for unwanted phrases
+        var objstr = JSON.stringify(tweetobj)
         
         //if the tweet is sensitive or contains a non-allowed word, return false
         for (var i = 0; i < numexcluded; i++){
-              if (tweetobj.text.indexOf(excluded[i]) !== -1 || tweetobj.possibly_sensitive){
+              if (objstr.indexOf(excluded[i]) !== -1 || tweetobj.possibly_sensitive){
                 return false;
                 }
               }
