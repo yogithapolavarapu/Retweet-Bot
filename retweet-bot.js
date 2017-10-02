@@ -11,7 +11,7 @@ var excluded = ["Monty", "monty", "lurking", "Lurking", "ball python", "snake", 
                 "montypython", "MontyPython", "pet", "Pet", "#pet", "Dance", "dance", "Police", "police", "Leather", "leather",
                 "Pants", "pants", "Handbag", "handbag", "forsyth", "Forsyth", "Ball Python" , "Nigeria", "nigeria", "creatur.io", "Slither.io",
                 "BallPython", "ballpython", "#BallPython", "#ballpython", "Python Temple", "#pythontemple", "Luthier", "versace", "Versace", "Python's Realm",
-                "Dangerous", "jaw", "swallow", "Swallow", "Kyle Python", "Python Plan", "Python Skin", "python skin"];
+                "Dangerous", "jaw", "swallow", "Swallow", "Kyle Python", "Python Plan", "Python Skin", "python skin", "zoo", "Zoo"];
 //all of the Biafra/Nigeria/Dance references are because "python" is a symbol in some political current events going on there
 
 
