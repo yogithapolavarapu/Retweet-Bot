@@ -2,7 +2,8 @@ TWITTER_CONSUMER_KEY    = "";
 TWITTER_CONSUMER_SECRET = "";
 TWITTER_ACCESS_TOKEN    = "";
 TWITTER_ACCESS_SECRET   = "";
-TWITTER_SEARCH_PHRASE   = "python -filter:nativeretweets -filter:retweets -filter:replies";
+TWITTER_SEARCH_PHRASE   = "python -filter:nativeretweets -filter:retweets -filter:replies"; 
+//filters out replies, retweets, and old-style retweets(RT)
 
 //variables for array of excluded words and a variable for the length of the array
 //words will be added as I continue to find false positives
@@ -59,11 +60,7 @@ function retweet_Python() {
     
     var props = PropertiesService.getScriptProperties(),
         twit = new Twitter.OAuth(props);
-    
-    //reduced function to check if tweet is relevant enough for bot to retweet
-    //filters based on word list and sensitivity
-    //if any of the if conditions match, it returns false (not relevant) and fetchTweets will not fetch it
-    //otherwise it returns the tweet
+  
       function isTweetRelevant(tweetobj){
         
         //if the tweet text property does not contain the word python in some form, return false
