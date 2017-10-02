@@ -7,8 +7,10 @@ TWITTER_SEARCH_PHRASE   = "python -filter:nativeretweets -filter:retweets -filte
 //variables for array of excluded words and a variable for the length of the array
 //words will be added as I continue to find false positives
 var excluded = ["Monty", "monty", "lurking", "Lurking", "ball python", "snake", "Snake", "Biafra", "biafra", "BIAFRA", "Biafrans", "biafrans",
-                "montypython", "MontyPython", "pet", "Pet", "Dance", "dance", "Police", "police", "Leather", "leather",
-                "Pants", "pants", "Handbag", "handbag", "forsyth", "Forsyth", "Ball Python" , "Nigeria", "nigeria"];
+                "montypython", "MontyPython", "pet", "Pet", "#pet", "Dance", "dance", "Police", "police", "Leather", "leather",
+                "Pants", "pants", "Handbag", "handbag", "forsyth", "Forsyth", "Ball Python" , "Nigeria", "nigeria", "creatur.io", "Slither.io",
+                "BallPython", "ballpython", "#BallPython", "#ballpython", "Python Temple", "#pythontemple", "Luthier", "versace", "Versace", "Python's Realm",
+                "Dangerous", "jaw", "swallow", "Swallow", "Kyle Python", "Python Plan", "Python Skin", "python skin"];
 //all of the Biafra/Nigeria/Dance references are because "python" is a symbol in some political current events going on there
 
 
