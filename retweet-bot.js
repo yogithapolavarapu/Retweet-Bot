@@ -30,7 +30,7 @@ function Start_Bot() {
     SINCE_TWITTER_ID: 0
   });
   
-  var twit = new Twitter.OAuth(props);
+  var twit = new Twitterlib.OAuth(props);
   
   // Test Twitter authorization
   
